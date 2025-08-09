@@ -1,3 +1,4 @@
+# Importing turtle graphics and math
 import turtle
 import math
 
