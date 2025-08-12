@@ -4,6 +4,7 @@ import math
 
 class DoomTurtle:
     def __init__(self):
+        self.graphics = 60 # 120 - high, 60 - medium, 20 - low
         # Screen setup
         self.screen = turtle.Screen()
         self.screen.setup(800, 600)
@@ -20,7 +21,7 @@ class DoomTurtle:
         
         # Raycasting settings
         self.fov = math.pi / 3  # 60 degree field of view
-        self.num_rays = 60      # Reduced for better performance with Turtle
+        self.num_rays = self.graphics      # Reduced for better performance with Turtle
         self.max_depth = 10
         self.wall_height = 1.0
         
@@ -182,7 +183,11 @@ class DoomTurtle:
                 self.drawer.goto(x_pos, wall_bottom)
                 self.drawer.goto(x_pos, wall_top)
                 self.drawer.end_fill()
-        
+        # Crosshair
+        self.drawer.goto(0, 0)
+        self.drawer.color("black")
+        self.drawer.write('+', font= ("Arial", 20, "normal"))
+
         self.screen.update()
     
     def move_forward(self):
