@@ -1,5 +1,4 @@
 # Importing turtle graphics and math
-# Now with touch controls!!! 
 import turtle
 import math
 
@@ -21,7 +20,7 @@ class DoomTurtle:
         
         # Raycasting settings
         self.fov = math.pi / 3  # 60 degree field of view
-        self.num_rays = 20      # Reduced for better performance with Turtle
+        self.num_rays = 60      # Reduced for better performance with Turtle
         self.max_depth = 10
         self.wall_height = 1.0
         
@@ -183,8 +182,7 @@ class DoomTurtle:
                 self.drawer.goto(x_pos, wall_bottom)
                 self.drawer.goto(x_pos, wall_top)
                 self.drawer.end_fill()
-        self.screen_controls(x=0, y=0)
-        turtle.onscreenclick(self.screen_controls)
+        
         self.screen.update()
     
     def move_forward(self):
@@ -211,71 +209,6 @@ class DoomTurtle:
     def rotate_right(self):
         self.player_angle += self.rot_speed
     
-
-    def screen_controls(self, x, y):
-        
-        #left
-        self.drawer.penup()
-        self.drawer.pencolor("black")
-        self.drawer.fillcolor("black")
-        self.drawer.goto(100, 100)
-        self.drawer.begin_fill()
-        self.drawer.pendown()
-        self.drawer.goto(130, 100)
-        self.drawer.goto(130, 130)
-        self.drawer.goto(100, 130)
-        self.drawer.goto(100, 100)
-        self.drawer.end_fill()
-        self.drawer.goto(115, 115)
-        self.drawer.pencolor("white")
-        self.drawer.write("left", align="center")
-        self.drawer.penup()
-        if x < 130 and x > 100 and y < 130 and y > 100:
-            self.rotate_left()
-            #print(x, y, "left")
-        
-        #right
-        self.drawer.penup()
-        self.drawer.pencolor("black")
-        self.drawer.fillcolor("black")
-        self.drawer.goto(200, 100)
-        self.drawer.begin_fill()
-        self.drawer.pendown()
-        self.drawer.goto(230, 100)
-        self.drawer.goto(230, 130)
-        self.drawer.goto(200, 130)
-        self.drawer.goto(200, 100)
-        self.drawer.end_fill()
-        self.drawer.goto(215, 115)
-        self.drawer.pencolor("white")
-        self.drawer.write("right", align="center")
-        self.drawer.penup()
-        if x < 230 and x > 200 and y < 130 and y > 100:
-            self.rotate_right()
-            #print(x, y, "right")
-
-
-        #forward
-        self.drawer.penup()
-        self.drawer.pencolor("black")
-        self.drawer.fillcolor("black")
-        self.drawer.goto(190, 160)
-        self.drawer.begin_fill()
-        self.drawer.pendown()
-        self.drawer.goto(190, 160)
-        self.drawer.goto(190, 190)
-        self.drawer.goto(160, 190)
-        self.drawer.goto(160, 160)
-        self.drawer.end_fill()
-        self.drawer.goto(175, 175)
-        self.drawer.pencolor("white")
-        self.drawer.write("forward", align="center")
-        self.drawer.penup()
-        if x < 190 and x > 160 and y < 190 and y > 160:
-            self.move_forward()
-            #print(x, y, "forward")
-        
-
     def quit_game(self):
         self.screen.bye()
     
